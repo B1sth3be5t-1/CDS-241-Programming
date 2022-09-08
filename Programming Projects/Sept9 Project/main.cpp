@@ -11,7 +11,7 @@ double a, b, c;
 //creates separate input function, sets a b and c
 void input() {
     cout << "Input 3 numbers: " << std::endl;
-    cin >> a >> b >> c;
+    cin >> a >> b >> c; 
 }
 
 
