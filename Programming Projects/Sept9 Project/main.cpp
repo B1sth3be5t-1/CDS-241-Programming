@@ -65,6 +65,7 @@ int main() {
 
         //output
         cout << x1 << ", and " << x2 << std::endl;
+        
     }
 
 }
