@@ -8,7 +8,7 @@ using std::endl;
 
 int main(int, char**) {
     //3.4
-    /*
+    
     cout << "Enter 2 strings: ";
     string s1, s2;
     cin >> s1 >> s2;
@@ -28,7 +28,7 @@ int main(int, char**) {
     if (s3.size() == s4.size()) cout << "The strings are the same length" << endl;
     else if (s3.size() > s4.size()) cout << "s3.size() is > s4.size()" << endl;
     else cout << "s3.size() is < s4.size()" << endl;
-    */
+    
 
 
     //3.10
