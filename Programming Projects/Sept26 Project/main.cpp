@@ -12,7 +12,7 @@ int main() {
     int max;
     double num, mean, median, stdDev;
     string title;
-    const string lineLong = "---------------------------------------------------------------------------------";
+    const string lineLong = "----------------|---------------|---------------|---------------|----------------";
     const string lineShort = "\t\t|-----------------------------------------------|"; // 47 chars
     vector<double> vals;
     vector<int> buckets;
@@ -66,21 +66,17 @@ int main() {
     }
 
 
-    int spaceLength = 47 - title.length();
-    spaceLength /= 2;
-    string tabs ("\t", ((spaceLength / 8) + 1));
-    string spaces (" ", spaceLength % 8 + 1);
-    {
+    
     //output name of assignment
+    {
     cout << lineShort << endl;
-    //cout << "\t\t|" << tabs << spaces << title;
-
-    printf ("\t\t|%s %s %s|\n", tabs, spaces, title);
+    string endT {"\t\t\t\t\t\t\t\t|"};
+    cout << "\t\t|\t    " << title << endT << endl;
     }
 
     //output basic information
     {
-    cout << spaces << tabs  << "|" << endl << lineShort << endl;
+    cout << lineShort << endl;
     cout << "\t\t|      Perfect Score:\t|     # of scores:\t|" << endl;
     cout << lineShort << endl;
 
@@ -106,7 +102,7 @@ int main() {
 
     //outputs letter row
     {
-    vector<char> letters {'A', 'B', 'C', 'D', 'F'};
+    vector<char> letters {'F', 'D', 'C', 'B', 'A'};
     cout << lineLong << endl;
     for (int i = 0; i < letters.size(); ++i)  
         cout << "|\t" << letters[i] << "\t";
@@ -120,5 +116,13 @@ int main() {
         cout << "|\t" << buckets[i] << "\t";
     cout << "|" << endl;
     cout << lineLong << endl;
+    }
+
+    //output C count
+    {
+    cout << lineShort << endl;
+    cout << "\t\t|\t       Passing grades (C):  \t\t|" << endl;
+    cout << lineShort << endl;
+    cout << "\t\t|\t\t      " << (buckets[2] + buckets[3] + buckets[4]) << "/" << vals.size() << "\t\t\t|" << endl;
     }
 }
