@@ -13,7 +13,7 @@ int main() {
     double num, mean, median, stdDev;
     string title;
     const string lineLong = "---------------------------------------------------------------------------------";
-    const string lineShort = "-----------------------------------------------";
+    const string lineShort = "\t\t|-----------------------------------------------|"; // 47 chars
     vector<double> vals;
     vector<int> buckets;
 
@@ -41,10 +41,14 @@ int main() {
     total /= vals.size();
     mean = total;
 
+    
     //calculate median
     sort(vals.begin(), vals.end());
-    median = vals[(vals.size() + 1) / 2];
 
+    if (vals.size() % 2 != 0) 
+        median = vals[(vals.size() + 1) / 2];
+    else 
+        median = (vals[(vals.size() + 1) / 2] + vals[(vals.size() + 2) / 2]) / 2;
     //calculate standard deviation
     for (auto d : vals)
         stdDev += pow((d - mean), 2);
@@ -62,17 +66,40 @@ int main() {
     }
 
 
+    int spaceLength = 47 - title.length();
+    spaceLength /= 2;
+    string tabs ("\t", ((spaceLength / 8) + 1));
+    string spaces (" ", spaceLength % 8 + 1);
+    {
+    //output name of assignment
+    cout << lineShort << endl;
+    //cout << "\t\t|" << tabs << spaces << title;
+
+    printf ("\t\t|%s %s %s|\n", tabs, spaces, title);
+    }
+
+    //output basic information
+    {
+    cout << spaces << tabs  << "|" << endl << lineShort << endl;
+    cout << "\t\t|      Perfect Score:\t|     # of scores:\t|" << endl;
+    cout << lineShort << endl;
+
+    cout << "\t\t|\t    " << max << "\t\t|" << "\t   " << vals.size() << "\t\t|" << endl;
+    cout << lineShort << endl;
+    }
+
     //outputs titles
     {
-    cout << "\t\t|" << lineShort << "|" << endl;
+    cout << lineShort << endl;
     cout << "\t\t|    Average:\t|     Median:\t|    Std. Dev\t|" << endl;
-    cout << "\t\t|" << lineShort << "|" << endl;
+    cout << lineShort << endl;
     }
     
     //output values
     {
-    printf ("\t\t|   %f\t|   %f\t|   %f\t|", mean, median, stdDev);
-    cout << endl << "\t\t|" << lineShort << "|" << endl;
+    printf ("\t\t|   %f\t|   %f\t|   %f\t|\n", mean, median, stdDev);
+    cout << lineShort << endl;
+    cout << lineShort << endl;
 
     cout << "\t\t|\t\t     Buckets: \t\t\t|" << endl;
     }
