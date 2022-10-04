@@ -3,17 +3,23 @@
 
 using namespace std;   
 
-bool checker(vector<int> v1, vector<int> v2) {
+bool checker(const vector<int>& v1, const vector<int>& v2) {
+    const vector<int>* small;
+    const vector<int>* large;
     if (v1.size() < v2.size()) {
-            for (int i = 0; i < v1.size(); ++i)
-                if (v1[i] != v2[i]) return false;
-            return true;
-        }
-        else {
-            for (int i = 0; i < v2.size(); ++i)
-                if (v1[i] != v2[i]) return false;
-            return true;
-        }
+        small = &v1;
+        large = &v2;
+    }
+    else {
+        small = &v2;
+        large = &v1;
+    }
+
+
+    for (int i = 0; i < (*small).size(); ++i)
+        if ((*small)[i] != (*large)[i]) return false;
+    return true;
+
 }
 
 int main() {
