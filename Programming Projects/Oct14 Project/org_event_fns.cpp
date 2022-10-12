@@ -92,7 +92,7 @@ void addAttendees(std::vector<Organization>& orgs) {
         addAttendeeToEvent(orgs, s);
 }
 
-//ASK ABOUT REPEAT ATTENDEES
+
 std::string getLargestOrgName(const std::vector<Organization>& orgs) {
     string largest;
     int largestAtt = 0;
