@@ -10,12 +10,14 @@ int main() {
     orgs = createOrganizations();
     addAttendees(orgs);
 
+    
     string biggestOrg = getLargestOrgName(orgs);
-    cout << "The biggest organization is: " << biggestOrg << endl;
+    cout << "The biggest organization is: " << biggestOrg <<  "\n" << endl;
 
     vector<string> smalls = getSmallEvents(orgs);
     for (auto s : smalls) 
-        cout << "Small event: " << s << endl;
-    
+        cout << "The event "<< s << " is likely to be cancelled" << endl;
 
+    
+    
 }

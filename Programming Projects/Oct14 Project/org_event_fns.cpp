@@ -28,7 +28,7 @@ void addEvent(std::vector<Organization>& orgs, const std::string& eventStr) {
     newEvent.attendees = blankAttendees;
 
     //loop through inputted orgs
-    for (auto org : orgs)
+    for (auto& org : orgs)
         //if the input org name is = to the org loop name
         if (org.name == orgStr)
         {
@@ -70,11 +70,17 @@ void addAttendeeToEvent(std::vector<Organization>& orgs, const std::string& atte
     }
 
     //loop through all organizations
-    for (auto o : orgs)
+    for (auto& o : orgs)
         //loop through all events in said organization
-        for (auto e : o.events)
+        for (auto& e : o.events)
             //if event name matches input string name
-            if (e.name == evStr)
+            /*
+                Something is being very funky with my strings, the last one
+                always matches if its correct, but the rest are off. I'd assume
+                theres some hidden character thats giving me an issue but I don't
+                know what to do about it.
+            */
+            if (e.name.compare(evStr) == 0 || e.name.compare(evStr) == -1) 
                 //add attendee
                 e.attendees.push_back(attendee);
 }
@@ -112,12 +118,12 @@ std::string getLargestOrgName(const std::vector<Organization>& orgs) {
     return largest;
 }
 
-std::vector<std::string> getSmallEvents(const std::vector<Organization>& orgs) {
-    vector<string> eventNames;
-    for (auto o : orgs)
-        for (auto e : o.events)
+std::vector<string> getSmallEvents(const std::vector<Organization>& orgs) {
+    vector<string> s;
+    for (auto& o : orgs)
+        for (auto& e : o.events)
             if (e.attendees.size() < 3)
-                eventNames.push_back(e.name);
+                s.push_back(e.name);
 
-    return eventNames;
+    return s;
 }
