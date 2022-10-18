@@ -39,21 +39,9 @@ Log::Log(const string& str) {
     success = b;
 }
 
-string Log::to_string() {
+string Log::to_string() const {
     string ret = this->date + "," + this->time + "," 
-                + this->user + "," + this->ip + ",";
-    if (this->success) {
-        ret = ret + "true";
-    }
-    else {
-        ret = ret + "false";
-    }
+                + this->user + "," + this->ip + "," + (this->success ? "true" : "false");
     return ret;
 }
 
-inline
-string Log::getDate() const {return this->date;}
-string Log::getTime() const {return this->time;}
-string Log::getUser() const {return this->user;}
-string Log::getIp() const {return this->ip;}
-bool Log::getSuccess() const {return this->success;}
