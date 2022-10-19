@@ -27,13 +27,13 @@ public:
     ~Log() = default;
 
 
-    std::string to_string();
+    std::string to_string() const;
     //technically these should be const funtions, so that the caller cannot change the object's data
-    inline std::string getDate() const;
-    inline std::string getTime() const;
-    inline std::string getUser() const;
-    inline std::string getIp() const;
-    inline bool getSuccess() const;
+    inline std::string getDate() const {return date;};
+    inline std::string getTime() const {return time;};
+    inline std::string getUser() const {return user;};
+    inline std::string getIp() const {return ip;};
+    inline bool getSuccess() const {return success;};
 
 
 
