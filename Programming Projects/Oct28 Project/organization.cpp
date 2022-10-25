@@ -22,27 +22,27 @@ bool Organization::add_attendee(const string& eName, const string& aName) {
     return false;
 }
 
-bool Organization::is_sponsoring(const string& n) const {
+bool Organization::is_sponsoring(const string& eName) const {
     for (const auto& e : events)
-        if (e.get_name() == n)
+        if (e.get_name() == eName)
             return true;
     
     return false;
 }
 
-vector<Event> Organization::attending_events(const string& n) const {
+vector<Event> Organization::attending_events(const string& aName) const {
     vector<Event> events;
     for (auto e : this->events)
-        if (e.is_attending(n))
+        if (e.is_attending(aName))
             events.push_back(e);
 
     return events;
 }
 
-vector<string> Organization::get_attendee_list(const string& n) const {
+vector<string> Organization::get_attendee_list(const string& eName) const {
     vector<string> names;
     for (const auto& e : this->events)
-        if (e.get_name() == n)
+        if (e.get_name() == eName)
         {
             //no way for us to get attendee list in event
             for (string name : e.get_attendees()) //<----------------------------------------------------------------

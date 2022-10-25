@@ -9,11 +9,11 @@ Event::Event(const string& n) : name(n) {};
 
 void Event::add_attendee(const string& n) {attendees.push_back(n);}
 
-bool Event::is_attending(const string& n) const {
+bool Event::is_attending(const string& aName) const {
     //loop through all attendees
     for (auto name : attendees)
     //if name matches, return true
-        if (name == n)
+        if (name == aName)
             return true;
     //else at end of loop, return false
     return false;

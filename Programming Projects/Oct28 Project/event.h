@@ -14,9 +14,9 @@ class Event {
     Event(const std::string& n);
 
     //adds attendee to event
-    void add_attendee(const std::string& n);
+    void add_attendee(const std::string& aName);
     //returns if attendee is in event
-    bool is_attending(const std::string& n) const;
+    bool is_attending(const std::string& aName) const;
     //returns number of attendees in event
     inline int num_attending() const {return attendees.size();}
 
