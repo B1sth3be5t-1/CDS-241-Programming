@@ -93,7 +93,7 @@ int main() {
                 found = false;
                 cout << "Please enter an event name: " << endl;
                 getline(cin, str);
-
+                cout << "\n\n\n\n" << endl;
                 //loop through orgs
                 for (const auto& o : orgs)
                     //if org is sponsoring the event
@@ -118,7 +118,7 @@ int main() {
                 found = false;
                 cout << "Please enter a person's name: " << endl;
                 getline(cin, str);
-
+                cout << "\n\n\n\n" << endl;
                 //loop through orgs
                 for (const auto& o : orgs)
                 {
@@ -139,6 +139,7 @@ int main() {
                 break;
             //user is silly and didnt input 1-3
             default:
+                cout << "\n\n\n\n" << endl;
                 cout << "Please enter a number 1, 2, or 3: " << endl;
         }
     } while (choice != 3);

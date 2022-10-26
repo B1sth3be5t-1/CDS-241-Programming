@@ -25,7 +25,7 @@ class Event {
     //set name of event
     void set_name(const std::string& n);
 
-
+    inline std::vector<std::string> get_copy_attendees() const {return attendees;};
 
     private: 
     std::string name;

@@ -45,7 +45,7 @@ vector<string> Organization::get_attendee_list(const string& eName) const {
         if (e.get_name() == eName)
         {
             //no way for us to get attendee list in event
-            for (string name : e.get_attendees()) //<----------------------------------------------------------------
+            for (string name : e.get_copy_attendees()) //<----------------------------------------------------------------
                 names.push_back(name);
 
             break;
