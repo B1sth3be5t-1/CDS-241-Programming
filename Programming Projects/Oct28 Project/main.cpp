@@ -66,7 +66,7 @@ int main() {
     while (getline(file2, line)) 
         put_attendee_in_event(orgs, line);
 
-    
+    //"\n\nPick a number by entering it into the program:\n\t1) Enter event name\n\t2) Enter a person's name\n\t3) Quit";
     //start user choices
     int choice = 0;
     string choiceStr;
