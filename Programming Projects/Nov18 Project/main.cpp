@@ -138,7 +138,7 @@ int main() {
                 break;
             case 4:
                 break;
-            //user is silly and didnt input 1-3
+            //user is silly and didnt input 1-4
             default:
                 cout << "\n\n\n\n" << endl;
                 cout << "Please enter a number 1 - 4: " << endl;
