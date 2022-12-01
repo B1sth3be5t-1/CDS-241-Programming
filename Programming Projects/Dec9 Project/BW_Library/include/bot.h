@@ -15,6 +15,9 @@ public:
     inline char get_symbol() const {return symbol;}
 
     // TODO -- You need to complete this class.
+    virtual int move() = 0;
+
+    virtual void examine_neighbors(std::vector<WorldLoc> n) = 0;
 
 private:
     char symbol;
