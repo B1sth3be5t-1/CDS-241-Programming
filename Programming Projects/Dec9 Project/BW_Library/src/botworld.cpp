@@ -143,7 +143,7 @@ bool BotWorld::run_sim(int k)
         // sleep for a few seconds in between steps.
         // the s suffix identifies a literal of type
         // chrono::duration<seconds>
-        this_thread::sleep_for(2s);
+        this_thread::sleep_for(.5s);
     }
     return false;
 }

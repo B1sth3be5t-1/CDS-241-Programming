@@ -17,7 +17,9 @@ public:
     // TODO -- You need to complete this class.
     virtual int move() = 0;
 
-    virtual void examine_neighbors(std::vector<WorldLoc> n) = 0;
+    virtual void examine_neighbors(const std::vector<WorldLoc>& n) = 0;
+
+    Bot& operator=(Bot&) = delete;
 
 private:
     char symbol;
