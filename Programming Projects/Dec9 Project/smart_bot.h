@@ -16,9 +16,10 @@ public:
 
 private:
     std::vector<WorldLoc> n;
-    std::deque<std::deque<WorldLoc>> world;
-    int x, y;
-    int xVals[2], yVals[2];
+    std::vector<int> potMoves;
+    std::vector<std::pair<int, int>> pairs;
+    int nextMove, x, y;
+    
 public:
     void outputKnown() const;
 };

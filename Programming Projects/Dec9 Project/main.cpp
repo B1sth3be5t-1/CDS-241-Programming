@@ -26,9 +26,13 @@ int main()
 
     bw.add_bot(make_unique<smartBot>(smartBot('S')));
     bw.add_bot(make_unique<drunkBot>(drunkBot('D')));
+    bw.add_bot(make_unique<smartBot>(smartBot('S')));
+    bw.add_bot(make_unique<drunkBot>(drunkBot('D')));
+    bw.add_bot(make_unique<followBot>(followBot('F')));
     bw.add_bot(make_unique<followBot>(followBot('F')));
 
     
 
-    bw.run_sim(2);
+    bw.run_sim(1000);
+
 }

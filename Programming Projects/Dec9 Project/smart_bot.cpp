@@ -2,86 +2,38 @@
 #include <vector>
 #include <algorithm>
 #include <iostream>
+#include <random>
 
 #include "smart_bot.h"
 
 using namespace std;
 
-smartBot::smartBot(char c) : Bot(c), x{0}, y{0}, xVals{0, 0}, yVals{0, 0} {
-    world.resize(1);
-    world[0].resize(1);
-
-    world[0][0] = EMPTY;
-};
+smartBot::smartBot(char c) : Bot(c), nextMove{-1}, x{0}, y{0} {};
 
 void smartBot::examine_neighbors(const vector<WorldLoc>& n) {
-    if (n[0] != EDGE)
-    if (x - 1 < xVals[0]){
-        for (auto& row : world) row.push_front(BOT);
-
-        x += 1;
-
-        if (n[0] == BOT) world[y][x - 1] = EMPTY;
-        
-        world[y][x - 1] = n[0];
-    }    
-
-    outputKnown();
-    
-    
-    if (n[2] != EDGE)
-    if (x + 1 > xVals[1]) {
-        for (auto& row : world)
-            row.push_back(BOT);
-        if (n[2] == BOT) world[y][x + 1] = EMPTY;
-        world[y][x + 1] = n[2];
-    }
-    outputKnown();
-
-    if (n[1] != EDGE)
-    if (y - 1 < yVals[1]) {
-        deque<WorldLoc> newRow;
-        newRow.resize(world[0].size());
-        for (auto& loc : newRow) loc = BOT;
-        world.push_front(newRow);
-        y += 1;
-        if (n[1] == BOT) world[y-1][x] = EMPTY;
-        world[y-1][x] = n[1];
-    }
-
-    outputKnown();
-    if (n[3] != EDGE)
-    if (y + 1 > yVals[0])
+    potMoves.clear();
+    this->n = n;
+    if (n[0] == EMPTY && n[0] != EDGE && n[0] != BOT && (pairs.end() == find(pairs.begin(), pairs.end(), make_pair(x - 1, y))))
     {
-        deque<WorldLoc> newRow;
-        newRow.resize(world[0].size());
-        for (auto& loc : newRow) loc = BOT;
-        world.push_back(newRow);
-        if (n[3] == BOT) world[y+1][x] = EMPTY;
-        world[y + 1][x] = n[3];
+        potMoves.push_back(0);
     }
+    if (n[1] == EMPTY && n[1] != EDGE && n[1] != BOT && (pairs.end() == find(pairs.begin(), pairs.end(), make_pair(x, y - 1)))) 
+    {
+        potMoves.push_back(1);
+    }
+    if (n[2] == EMPTY && n[2] != EDGE && n[2] != BOT && (pairs.end() == find(pairs.begin(), pairs.end(), make_pair(x + 1, y)))) 
+    {
+        potMoves.push_back(2);
+    }
+    if (n[3] == EMPTY && n[3] != EDGE && n[3] != BOT && (pairs.end() == find(pairs.begin(), pairs.end(), make_pair(x, y + 1)))) 
+    {
+        potMoves.push_back(3);
+    }
+    
 
-    outputKnown();
-    
-    
+    pairs.push_back(make_pair(x, y));
 }
 
-void smartBot::outputKnown() const {
-    for (auto& row : world) {
-        for (auto& WorldLoc : row) {
-            if (WorldLoc == EMPTY) 
-                cout << ".";
-            if (WorldLoc == BOT) 
-                cout << "B";
-            if (WorldLoc == OBSTACLE) 
-                cout << "#";
-            if (WorldLoc == GOAL) 
-                cout << "G";
-        }
-        cout << endl;
-    }
-    cout << "\n\n\n\n" << endl;
-}
 
 
 int smartBot::move() {
@@ -90,6 +42,31 @@ int smartBot::move() {
     if (n.end() != it) 
         return it - n.begin();
 
+    if (nextMove != -1) 
+    {   
+        int temp = nextMove;
+        nextMove = -1;
+        return temp;
+    }
 
-    return 0;
+    random_device dev;
+    mt19937 rng(dev());
+
+    if (potMoves.size() == 0) potMoves.resize(4);
+
+    
+    int size = potMoves.size();
+    uniform_int_distribution<mt19937::result_type> dist6(0, size);
+
+    int i = potMoves[dist6(rng)];
+
+    if (i == 0) --x;
+    else if (i == 1) --y;
+    else if (i == 2) ++x;
+    else ++y;
+
+    
+    return i;
+
+
 }

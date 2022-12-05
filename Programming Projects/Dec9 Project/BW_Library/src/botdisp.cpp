@@ -46,7 +46,7 @@ void BotDisp::show() const
     // This calls the "clear" command in the terminal. You might need to 
     // change this on your OS -- for instance, I think it's "cls" on windows.
     // Dunno about macOS.
-    //std::system("clear");
+    std::system("clear");
     for (int i = 0; i < height; ++i) {
         for (int j = 0; j < width; ++j) {
             cout << world[i][j];
